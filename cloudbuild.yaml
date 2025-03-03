@@ -1,0 +1,71 @@
+steps:
+  - name: gcr.io/cloud-builders/kubectl
+    args:
+      - '-c'
+      - >
+        #!/bin/bash
+
+        set -ex
+
+
+        # Tải Argo CD (phương pháp xác minh và đáng tin cậy hơn)
+
+        curl -sSL
+        "https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64"
+        -o argocd
+
+        chmod +x argocd
+
+        mv argocd /usr/local/bin/ # Loại bỏ sudo
+
+
+        # Kết nối đến Kubernetes cluster.  Error handling is crucial here.
+
+        if ! gcloud container clusters get-credentials test-estimate-tera --zone
+        asia-southeast1-a --project prj-vn-int-sa-north-lab; then
+          echo "Error: Failed to get Kubernetes credentials."
+          exit 1
+        fi
+
+
+        # Lấy thông tin đăng nhập ArgoCD từ biến môi trường (Substitutions).
+
+        ARGOCD_SERVER="${_ARGOCD_SERVER}"
+
+        ARGOCD_USERNAME="${_ARGOCD_USERNAME}"
+
+        ARGOCD_PASSWORD="${_ARGOCD_PASSWORD}"
+
+
+        # Kiểm tra biến có bị rỗng không. Xử lý lỗi mạnh mẽ hơn.
+
+        if [[ -z "$ARGOCD_USERNAME" || -z "$ARGOCD_PASSWORD" || -z
+        "$ARGOCD_SERVER" ]]; then
+          echo "Error: Missing ArgoCD credentials as substitutions."
+          exit 1
+        fi
+
+
+        # Đăng nhập vào ArgoCD với kiểm tra lỗi rõ ràng.
+
+        if ! /usr/local/bin/argocd login "${_ARGOCD_SERVER}"
+        --username="${_ARGOCD_USERNAME}" --password="${_ARGOCD_PASSWORD}"
+        --insecure; then
+          echo "Error: ArgoCD login failed."
+          exit 1
+        fi
+
+
+        # Đồng bộ hóa ứng dụng ArgoCD. Cải thiện xử lý lỗi và ghi log.
+
+        /usr/local/bin/argocd app list -o name | while read app; do
+          echo "Syncing application: $app"
+          if ! /usr/local/bin/argocd app sync "$app"; then
+            echo "Error: Failed to sync application $app."
+            # Consider whether to continue or exit on failure.  `exit 1` will stop the entire process.
+            # exit 1
+          fi
+        done
+    entrypoint: bash
+options:
+  logging: CLOUD_LOGGING_ONLY
