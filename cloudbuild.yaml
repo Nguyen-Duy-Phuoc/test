@@ -1,6 +1,5 @@
 steps:
   - name: gcr.io/cloud-builders/kubectl
-    id: test  
     args:
       - '-c'
       - |
