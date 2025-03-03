@@ -2,8 +2,8 @@ steps:
   - name: gcr.io/cloud-builders/kubectl
     args:
       - '-c'
-      - >
-        #!/bin/bash
+      - |
+        echo "test1" 
         set -ex
         if ! curl -sSL "https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64" -o argocd; then
         echo "Error: Download Argocd failed"
