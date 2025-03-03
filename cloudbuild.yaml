@@ -13,7 +13,7 @@ steps:
 
         mv argocd /usr/local/bin/ # 
 
-        if ! gcloud container clusters get-credentials test-estimate-tera --zone asia-southeast1-a --project prj-vn-int-sa-north-lab; then
+        if ! gcloud container clusters get-credentials gke-tera-dev --region asia-southeast1 --project tera-projects-dev; then
           echo "Error: Failed to get Kubernetes credentials."
           exit 1
         fi
