@@ -17,7 +17,7 @@ steps:
           echo "Error: Failed to get Kubernetes credentials."
           exit 1
         fi
-        kubectl config get-contexts
+        kubectl get ns -v9
         if ! /usr/local/bin/argocd login "${_ARGOCD_SERVER}" --username="${_ARGOCD_USERNAME}" --password="${_ARGOCD_PASSWORD}" --insecure; then
           echo "Error: ArgoCD login failed."
           exit 1
