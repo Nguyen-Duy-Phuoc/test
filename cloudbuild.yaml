@@ -24,8 +24,7 @@ steps:
           exit 1
         fi
 
-        /usr/local/bin/argocd  argocd app list -o name | xargs -I {} argocd app sync {}
-        done
+        /usr/local/bin/argocd app list -o name | xargs -I '{}' /usr/local/bin/argocd app sync '{}'
     entrypoint: bash
 options:
   logging: CLOUD_LOGGING_ONLY
