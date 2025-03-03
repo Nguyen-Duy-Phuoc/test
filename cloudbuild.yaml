@@ -4,15 +4,10 @@ steps:
       - '-c'
       - >
         #!/bin/bash
-
         set -ex
-
-
         # Tải Argo CD (phương pháp xác minh và đáng tin cậy hơn)
-
         curl -sSL
-        "https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64"
-        -o argocd
+        "https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64" -o argocd
 
         chmod +x argocd
 
@@ -27,23 +22,6 @@ steps:
           exit 1
         fi
 
-
-        # Lấy thông tin đăng nhập ArgoCD từ biến môi trường (Substitutions).
-
-        ARGOCD_SERVER="${_ARGOCD_SERVER}"
-
-        ARGOCD_USERNAME="${_ARGOCD_USERNAME}"
-
-        ARGOCD_PASSWORD="${_ARGOCD_PASSWORD}"
-
-
-        # Kiểm tra biến có bị rỗng không. Xử lý lỗi mạnh mẽ hơn.
-
-        if [[ -z "$ARGOCD_USERNAME" || -z "$ARGOCD_PASSWORD" || -z
-        "$ARGOCD_SERVER" ]]; then
-          echo "Error: Missing ArgoCD credentials as substitutions."
-          exit 1
-        fi
 
 
         # Đăng nhập vào ArgoCD với kiểm tra lỗi rõ ràng.
