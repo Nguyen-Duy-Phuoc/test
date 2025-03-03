@@ -5,10 +5,10 @@ steps:
       - >
         #!/bin/bash
         set -ex
-        # Tải Argo CD (phương pháp xác minh và đáng tin cậy hơn)
-        curl -sSL
-        "https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64" -o argocd
-
+        if ! curl -sSL "https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64" -o argocd; then
+        echo "Error: Download Argocd failed"
+          exit 1
+        fi
         chmod +x argocd
 
         mv argocd /usr/local/bin/ # Loại bỏ sudo
