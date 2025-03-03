@@ -15,8 +15,7 @@ steps:
 
 
 
-        if ! gcloud container clusters get-credentials test-estimate-tera --zone
-        asia-southeast1-a --project prj-vn-int-sa-north-lab; then
+        if ! gcloud container clusters get-credentials test-estimate-tera --zone asia-southeast1-a --project prj-vn-int-sa-north-lab; then
           echo "Error: Failed to get Kubernetes credentials."
           exit 1
         fi
