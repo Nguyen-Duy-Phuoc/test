@@ -11,34 +11,19 @@ steps:
         fi
         chmod +x argocd
 
-        mv argocd /usr/local/bin/ # Loại bỏ sudo
-
-
+        mv argocd /usr/local/bin/ # 
 
         if ! gcloud container clusters get-credentials test-estimate-tera --zone asia-southeast1-a --project prj-vn-int-sa-north-lab; then
           echo "Error: Failed to get Kubernetes credentials."
           exit 1
         fi
 
-
-
-
-        if ! /usr/local/bin/argocd login "${_ARGOCD_SERVER}"
-        --username="${_ARGOCD_USERNAME}" --password="${_ARGOCD_PASSWORD}"
-        --insecure; then
+        if ! /usr/local/bin/argocd login "${_ARGOCD_SERVER}" --username="${_ARGOCD_USERNAME}" --password="${_ARGOCD_PASSWORD}" --insecure; then
           echo "Error: ArgoCD login failed."
           exit 1
         fi
 
-
-
-        /usr/local/bin/argocd app list -o name | while read app; do
-          echo "Syncing application: $app"
-          if ! /usr/local/bin/argocd app sync "$app"; then
-            echo "Error: Failed to sync application $app."
-            # Consider whether to continue or exit on failure.  `exit 1` will stop the entire process.
-            # exit 1
-          fi
+        /usr/local/bin/argocd  argocd app list -o name | xargs -I {} argocd app sync {}
         done
     entrypoint: bash
 options:
