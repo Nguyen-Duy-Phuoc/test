@@ -21,12 +21,6 @@ steps:
         for ns in airbyte-backup elasticsearch oneloyalty-ns onstudio logging kube-infra; do
           kubectl scale statefulsets --all --replicas=0 -n "$ns1"
         done
-        kubectl scale statefulsets --all --replicas=0 -n airbyte-backup
-        kubectl scale statefulsets --all --replicas=0 -n elasticsearch 
-        kubectl scale statefulsets --all --replicas=0 -n oneloyalty-ns
-        kubectl scale statefulsets --all --replicas=0 -n onstudio
-        kubectl scale statefulsets --all --replicas=0 -n logging
-        kubectl scale statefulsets --all --replicas=0 -n kube-infra
     entrypoint: bash
 options:
   logging: CLOUD_LOGGING_ONLY
