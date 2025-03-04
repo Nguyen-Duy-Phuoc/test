@@ -8,101 +8,19 @@ steps:
           echo "Error: Failed to get Kubernetes credentials."
           exit 1
         fi
-        kubectl patch app centralized-ac -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app centralized-onereels-ac -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app centralized-onlala-ac -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app content-discovery-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app content-discovery-consumer -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app content-statistic -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app eck-vietnamese -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app eck-vietnamese-exporter -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app ecommerce -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app ecommerce-ac -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app ecommerce-gateway -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app ecommerce-merchandise-web -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app ecommerce-order-service-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app ecommerce-page-builder -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app ecommerce-product-exploration-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app ecommerce-product-management-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app gaming-room-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app gaming-room-service-management -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app kafka-connect -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app kafka-ui -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app keycloak -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app merchant-service-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app on-gateway -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app oneloyalty-app -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app oneloyalty-app-v6 -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app oneloyalty-license-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app oneloyalty-loyalty-service-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app oneloyalty-loyalty-service-management -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app oneloyalty-tracking-data-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-aa-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-ac -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-interactive-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-license-token-generator -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-loyalty-service-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-loyalty-service-management -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-notification-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-otp -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-purchase-service-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-tracking-data-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-user-graph-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-user-graph-monitor -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-user-profile-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onereels-web-sharing -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-aa-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-ac -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-cms-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-cms-batch -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-cms-cronjobs -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-content-exploration-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-content-exploration-service-consumer -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-interactive-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-license-token-generator -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-notification-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-purchase-service-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-sms-otp -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-tracking-data-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-user-graph-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-user-graph-monitor -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-user-profile-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onlala-web-sharing -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onstudio -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app onstudio-dashboard -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app ontv-cassandra -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app ontv-cms-dashboard -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app ontv-web-sharing -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app redis-cluster -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app reelseries-exploration-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app reelseries-exploration-service-consumer -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app show-hub-api -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app show-hub-management -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app show-hub-notification-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app showhub -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app showhub-mfe -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app subscriber-gateway -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app user-profile-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app voucher-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app yvote -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app yvote-aa-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app yvote-ac -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app yvote-notification-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app yvote-sms-otp -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app yvote-web -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl patch app yvoting-service -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        kubectl scale deployments --all --replicas=0 -n airbyte
-        kubectl scale deployments --all --replicas=0 -n ecommerce
-        kubectl scale deployments --all --replicas=0 -n elasticsearch
-        kubectl scale deployments --all --replicas=0 -n external-secrets
-        kubectl scale deployments --all --replicas=0 -n oneloyalty-ns
-        kubectl scale deployments --all --replicas=0 -n onereels
-        kubectl scale deployments --all --replicas=0 -n onlala
-        kubectl scale deployments --all --replicas=0 -n onstudio
-        kubectl scale deployments --all --replicas=0 -n show-hub
-        kubectl scale deployments --all --replicas=0 -n yvote
+        kubectl get app -n argocd --no-headers -o custom-columns=":metadata.name" | xargs -I {} kubectl patch app {} -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
+        for ns in airbyte ecommerce elasticsearch oneloyalty-ns onereels onlala onstudio show-hub yvote ; do
+          echo "- $ns"
+        done 
+        for ns in airbyte ecommerce elasticsearch oneloyalty-ns onereels onlala onstudio show-hub yvote; do
+          kubectl scale deployments --all --replicas=0 -n "$ns"
+        done
+        for ns in airbyte-backup elasticsearch oneloyalty-ns onstudio logging kube-infra; do
+          echo "- $ns1"
+        done 
+        for ns in airbyte-backup elasticsearch oneloyalty-ns onstudio logging kube-infra; do
+          kubectl scale statefulsets --all --replicas=0 -n "$ns1"
+        done
         kubectl scale statefulsets --all --replicas=0 -n airbyte-backup
         kubectl scale statefulsets --all --replicas=0 -n elasticsearch 
         kubectl scale statefulsets --all --replicas=0 -n oneloyalty-ns
