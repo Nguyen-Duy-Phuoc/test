@@ -9,17 +9,11 @@ steps:
           exit 1
         fi
         kubectl get app -n argocd --no-headers -o custom-columns=":metadata.name" | xargs -I {} kubectl patch app {} -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": false}}}}'
-        for ns in airbyte ecommerce elasticsearch oneloyalty-ns onereels onlala onstudio show-hub yvote ; do
-          echo "- $ns"
-        done 
         for ns in airbyte ecommerce elasticsearch oneloyalty-ns onereels onlala onstudio show-hub yvote; do
           kubectl scale deployments --all --replicas=0 -n "$ns"
         done
         for ns in airbyte-backup elasticsearch oneloyalty-ns onstudio logging kube-infra; do
-          echo "- $ns1"
-        done 
-        for ns in airbyte-backup elasticsearch oneloyalty-ns onstudio logging kube-infra; do
-          kubectl scale statefulsets --all --replicas=0 -n "$ns1"
+          kubectl scale statefulsets --all --replicas=0 -n "$ns"
         done
     entrypoint: bash
 options:
