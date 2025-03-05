@@ -4,17 +4,11 @@ steps:
       - '-c'
       - | 
         set -ex
-        if ! curl -sSL "https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64" -o argocd; then
-        echo "Error: Download Argocd failed"
+        if ! gcloud container clusters get-credentials gke-tera-dev --region asia-southeast1 --project tera-projects-dev; then
+          echo "Error: Failed to get Kubernetes credentials."
           exit 1
         fi
-        chmod +x argocd
-        mv argocd /usr/local/bin/ 
-        if ! /usr/local/bin/argocd login "${_ARGOCD_SERVER}" --username="${_ARGOCD_USERNAME}" --password="${_ARGOCD_PASSWORD}" --insecure --skip-test-tls; then
-          echo "Error: ArgoCD login failed."
-          exit 1
-        fi
-        /usr/local/bin/argocd app list -o name | xargs -I {} argocd app set {} --self-heal
+        kubectl get app -n argocd --no-headers -o custom-columns=":metadata.name" | xargs -I {} kubectl patch app {} -n argocd --type merge -p '{"spec":{"syncPolicy":{"automated":{"selfHeal": true}}}}'
     entrypoint: bash
 options:
   logging: CLOUD_LOGGING_ONLY
